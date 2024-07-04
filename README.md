@@ -98,3 +98,26 @@ To run the `connection_backup.sh` script on Windows using the Ubuntu WSL 2 termi
 
 Make sure you have Docker and MariaDB installed and properly configured in your Ubuntu WSL 2 environment before running the script.
 
+## Cronjob
+
+### Cronjob
+
+To schedule the `connection_backup.sh` script to run automatically at specified intervals, you can set up a cronjob. 
+
+1. Open the crontab file by running the following command:
+
+```
+crontab -e
+```
+
+2. Add a new line to the crontab file with the desired schedule and the command to execute the script. For example, to run the script every day at 3 AM, you can add the following line:
+
+```
+0 3 * * * /home/berke-poslu/Code/vscode/Datenbankbackups-bashscript-automatisierung/connection_backup.sh
+```
+
+Make sure to replace `/path/to/connection_backup.sh` with the actual path to the `connection_backup.sh` script.
+
+3. Save the crontab file and exit the editor.
+
+The cronjob will now be scheduled to run the script automatically according to the specified schedule.

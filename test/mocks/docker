@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Mock behavior of docker 
+if [[ $1 == "exec" ]]; then
+  # Simulate successful docker exec command
+  exit 0
+fi

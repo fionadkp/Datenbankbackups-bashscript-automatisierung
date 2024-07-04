@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Mock behavior of gzip 
+for arg in "$@"; do
+    if [[ $arg != -* ]]; then
+        touch "$arg.gz"
+    fi
+done
+
+exit 0
