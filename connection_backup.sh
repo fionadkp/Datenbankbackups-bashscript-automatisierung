@@ -29,8 +29,8 @@ BACKUP_NAME="db_backup_$(date +%Y%m%d%H%M%S).sql"
 BACKUP_DAYS=7  # Number of days to keep backups. Checks for files older than this value and deletes them.
 
 # Check if mysqldump is installed
-if ! command -v mysqldump &> /dev/null; then
-    echo "mysqldump could not be found. Please install it and try again."
+if ! command -v mariadb-dump &> /dev/null; then
+    echo "mariadb-dump could not be found. Please install it and try again."
     exit 1
 fi
 
