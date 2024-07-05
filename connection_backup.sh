@@ -43,7 +43,7 @@ fi
 
 
 # Create the backup directory if it doesn't exist
-mkdir -p "${BACKUP_PATH}"
+mkdir -p "${BACKUP_PATH}/backups_compressed"
 
 if [ -z "$RUNNING_IN_TEST_ENV" ]; then
     # Perform the backup using mysqldump within the Docker container and save it to the backup directory
