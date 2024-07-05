@@ -16,17 +16,15 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     exit 0
 fi
 
-# Variables
-DB_USER="1234"
-DB_PASSWORD="1234"
-DB_NAME="mariadb"
+# Load environment variables
+if [ -f .env ]; then
+    export $(cat .env | xargs)
+else
+    echo ".env file not found"
+    exit 1
+fi
 
-DB_ADDRESS="localhost"
-DB_PORT="3306"
-
-BACKUP_PATH="./backups"
 BACKUP_NAME="db_backup_$(date +%Y%m%d%H%M%S).sql"
-BACKUP_DAYS=7  # Number of days to keep backups.
 
 
 # Check if mysqldump is installed
