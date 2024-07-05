@@ -121,3 +121,10 @@ Make sure to replace `/path/to/connection_backup.sh` with the actual path to the
 3. Save the crontab file and exit the editor.
 
 The cronjob will now be scheduled to run the script automatically according to the specified schedule.
+
+## Testing with bats
+
+Our script utilises bats-core for testing
+
+### WINDOWS
+
