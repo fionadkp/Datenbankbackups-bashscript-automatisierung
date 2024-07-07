@@ -175,3 +175,6 @@ Our script utilises bats-core for testing
 
     # Linting
     The script was checked with `www.shellcheck.net`
+    # Demo Video
+    <video width="720" controls>
+        <source src="./demo_video.webm" type="video/webm">
