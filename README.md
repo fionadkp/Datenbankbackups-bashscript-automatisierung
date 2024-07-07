@@ -118,6 +118,8 @@ crontab -e
 
 Make sure to replace `/path/to/connection_backup.sh` with the actual path to the `connection_backup.sh` script.
 
+![image](./cronjob.png)
+
 3. Save the crontab file and exit the editor.
 
 The cronjob will now be scheduled to run the script automatically according to the specified schedule.
@@ -128,3 +130,48 @@ Our script utilises bats-core for testing
 
 ### WINDOWS
 
+1. Open the command prompt or PowerShell.
+
+2. Navigate to the directory where the `connection_backup_test.bats` script is located. For example, if the script is located in `/home/berke-poslu/Code/vscode/Datenbankbackups-bashscript-automatisierung`, you can use the following command:
+
+    ```
+    cd /home/berke-poslu/Code/vscode/Datenbankbackups-bashscript-automatisierung
+    ```
+
+3. Make sure you have bats-core installed. If not, you can install it by following the instructions in the bats-core documentation.
+
+4. Run the `connection_backup_test.bats` script by executing the following command:
+
+    ```
+    bats test/connection_backup_test.bats
+    ```
+
+    This will execute the test script and display the test results
+
+### LINUX
+
+
+1. Open the Terminal.
+
+2. Navigate to the directory where the `connection_backup_test.bats` script is located. For example, if the script is located in `/home/berke-poslu/Code/vscode/Datenbankbackups-bashscript-automatisierung`, you can use the following command:
+
+    ```
+    cd /home/berke-poslu/Code/vscode/Datenbankbackups-bashscript-automatisierung
+    ```
+
+3. Make sure you have bats-core installed. If not, you can install it by:
+
+    ```
+    sudo apt install bats-core
+    ```
+
+4. Run the `connection_backup_test.bats` script by executing the following command:
+
+    ```
+    bats connection_backup_test.bats
+    ```
+
+    This will execute the test script and display the test results
+
+    # Linting
+    The script was checked with `www.shellcheck.net`
