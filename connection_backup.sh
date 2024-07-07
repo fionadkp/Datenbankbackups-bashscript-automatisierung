@@ -23,23 +23,24 @@ fi
 # Ask the user if they want to change the environment variables for this session
 read_env() {
     read -r -p "Do you want to change the environment variables for this session? (y/n): " answer
+
+    if [[ $answer == "y" || $answer == "Y" ]]; then
+        read -r -p "Enter the database username: " DB_USER
+        read -r -p "Enter the database password: " DB_PASSWORD
+        read -r -p "Enter the database name: " DB_NAME
+        read -r -p "Enter the backup path: " BACKUP_PATH
+        read -r -p "Enter the number of days to keep backups: " BACKUP_DAYS
+    else
+        # Environment variables
+        if [ -f .env ]; then
+           export $(cat .env | xargs)
+        else
+            echo ".env file not found"
+            exit 1
+        fi
+    fi
 }
 
-if [[ $answer == "y" || $answer == "Y" ]]; then
-    read -r -p "Enter the database username: " DB_USER
-    read -r -p "Enter the database password: " DB_PASSWORD
-    read -r -p "Enter the database name: " DB_NAME
-    read -r -p "Enter the backup path: " BACKUP_PATH
-    read -r -p "Enter the number of days to keep backups: " BACKUP_DAYS
-else
-    # Environment variables
-    if [ -f .env ]; then
-        export $(cat .env | xargs)
-    else
-        echo ".env file not found"
-        exit 1
-fi
-fi
 
 BACKUP_NAME="db_backup_$(date +%Y%m%d%H%M%S).sql"
 
@@ -50,7 +51,6 @@ if ! command -v docker &> /dev/null; then
 fi
 
 perform_backup() {
-    read_env
     mkdir -p "${BACKUP_PATH}/backups_compressed"
     # Perform the backup using mysqldump within the Docker container and save it to the backup directory
     sudo docker exec mariadb mariadb-dump -u "${DB_USER}" -p"${DB_PASSWORD}" -h "${DB_ADDRESS}" -P "${DB_PORT}" "${DB_NAME}" | sudo tee "${BACKUP_PATH}/${BACKUP_NAME}" > /dev/null
@@ -83,6 +83,7 @@ cleanup_old_backups() {
 }
 
 main() {
+    read_env
     perform_backup
 }
 

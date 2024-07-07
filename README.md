@@ -168,7 +168,7 @@ Our script utilises bats-core for testing
 4. Run the `connection_backup_test.bats` script by executing the following command:
 
     ```
-    bats connection_backup_test.bats
+    bats test/connection_backup_test.bats
     ```
 
     This will execute the test script and display the test results
