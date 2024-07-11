@@ -174,7 +174,7 @@ Our script utilises bats-core for testing
     This will execute the test script and display the test results
 
     # Linting
-    The script was checked with `www.shellcheck.net`
+    The script was checked with `www.shellcheck.net` and with `shellcheck` package
     # Demo Video
     <video controls>
         <source src="./demo_video.mp4" type="video/mp4">
